@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HOMEPAGE</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0px;
+      }
+      h1 {
+        color: white;
+        font-size: 3rem;
+        text-align: center;
+      }
+      #container {
+        width: 80vw;
+        margin: auto;
+        background-color: silver;
+        border-radius: 4%;
+      }
+      .row1 {
+        padding: 4% 30%;
+      }
+      #value {
+        width: 20vw;
+      }
+      .row2 {
+        text-align: center;
+        display: none;
+      }
+      .row2 h3 {
+        font-size: 2rem;
+      }
+      .row2 p {
+        font-size: 1.4rem;
+      }
+      .row2 button {
+        height: 30px;
+        line-height: 1.2rem;
+      }
+      .row3 {
+        display: none;
+      }
+      .row3 h3 {
+        text-align: center;
+      }
+      .iframe {
+        width: 200px;
+      }
+      .subp {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TRY IT</h1>
+    <div id="container">
+      <div class="main">
+        <div class="row1">
+          <input
+            id="value"
+            type="number"
+            placeholder="Enter a number b/w 0 and 10..."
+          />
+          <input id="sub" type="submit" class="submit" />
+        </div>
+      </div>
+      <div class="row2">
+        <h3>The no is <span class="num"></span></h3>
+        <p>Try Next Game</p>
+        <button value="Refresh Page" onclick="window.location.reload()">
+          Try Again
+        </button>
+      </div>
+      <div class="row3">
+        <h3>Hurreee You Won!!!!</h3>
+        <div class="subp">
+          <iframe
+            src="https://giphy.com/embed/MhHXeM4SpKrpC"
+            height="200px"
+            frameBorder="0"
+            class="giphy-embed"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let inp = document.querySelector("#value");
+    let b = document.querySelector("body");
+    let a = ["red", "blue"];
+    let s = setInterval(function() {
+      let z = Math.round(Math.random());
+      b.style.backgroundColor = a[z];
+    }, 250);
+    let but = document.querySelector("#sub");
+    but.addEventListener("click", function() {
+      let ran_num = Math.round(Math.random() * 9) + 1;
+
+      let t = inp.value;
+      document.querySelector(".row2").style.display = "none";
+      document.querySelector(".row3").style.display = "none";
+      document.querySelector(".num").textContent = ran_num;
+      if (t > 10) {
+        window.alert("Please Enter A Number between 0 and 10 only");
+      }
+      if (t != ran_num) {
+        document.querySelector(".row2").style.display = "block";
+      } else {
+        document.querySelector(".row3").style.display = "block";
+      }
+    });
+  </script>
+</html>
